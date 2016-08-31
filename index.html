@@ -22,10 +22,9 @@
       <h3>
 <a id="git" class="anchor" href="#git" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating Build Numbers for iOS and Android Apps</h3>
 
-<p>On a project that I belong to, we needed a way to integrate our Mobile App development (using Xamarin) into our existing build process - Team City build agents running Windows Server and Powershell.</p>
-<p><a href="http://willowtreeapps.com/blog/automatic-build-numbering-with-xamarin/" title="Use PowerShell to Add Some Logic to Your Build Numbers in TeamCity">This</a> page has a terrific solution for updating build and version numbers within MsBuild.</p>
-<p>Updating the iOS build version is trivial using the plist tool on Mac OSX, but a simple Powershell script could update the versions for both platforms.</p>
-  If you're developing apps using Xamarin and want to integrate automatic build versioning into your build process, here's an example of a Powershell script to update an app's version and build number. It uses the git revision head count command to produce a build number:</p>
+<p>On a project that I belong to, we needed a way to integrate our Mobile App development (using Xamarin) into our existing version numbering process - using Team City build agents running Windows Server and Powershell - to update the Info.plist file for the iOS app and the AndroidManifest.xml file for Android.</p>
+<p><a href="http://willowtreeapps.com/blog/automatic-build-numbering-with-xamarin/" title="Use PowerShell to Add Some Logic to Your Build Numbers in TeamCity">This willowtreeapps.com page</a> has a terrific solution for updating build and version numbers within MsBuild. I decided not to use this approach as MsBuild's XmlPoke function seems to drop the !DOCTYPE node when updating the Info.plist file.</p>
+<p>Updating the build version for an iOS app is trivial if you use the plist update command on Mac OSX, but a simple Powershell script could update the versions for both app platforms. If you're developing apps using Xamarin and want to integrate automatic build versioning into your build process, here's an example of a Powershell script to update an app's version and build number. It uses the git revision head count command to produce a build number:</p>
 
 <script src="https://gist.github.com/campbellja/e5d735f048cab76adb16957fe4a7ad75.js"></script>
 
